@@ -1,7 +1,7 @@
 # Kira
 Kira is a python class for interacting with the smspool.net api.
 I am not sure all of this works but I will remove this part from the readme when I am sure.
-
+'''
 1. # Create a Kira object with your API key
 2. kira = Kira(api_key)
 
@@ -23,3 +23,4 @@ if success:
     print(f"Received SMS message: {message}")
 else:
     print(f"Failed to receive SMS message: {message}")
+'''
