@@ -83,20 +83,26 @@ class Kira :
             else :
                 return None
         
-    def wait_for_sms(self, order_id, wait_time:int) :
-        while True :
-            time.sleep(wait_time)
+    def wait_for_sms(self, order_id, cycle_time:int, max_wait_time:int = -1) :
+        current_wait_time = 0
+        done_looping = False
+        while not done_looping  :
+            time.sleep(cycle_time)
+            current_wait_time += cycle_time
             response = self.check_sms(order_id, True)
             if 'message' in response :
                 #we did not get the sms
                 if 'status' in response and response['status'] == 1:
                     #if it is pending
+                    if not max_wait_time == -1 :
+                        done_looping = (current_wait_time >= max_wait_time)
                     continue
                 else :
                     #else return the message
                     return False, response['message']
             else :
                 return True, response['sms']
+        return False, 'wait time up'
 
 
     def __init__(self, api_key) :
