@@ -2,8 +2,8 @@
 Kira is a python class for interacting with the smspool.net api.
 I am not sure all of this works but I will remove this part from the readme when I am sure.
 
-# Create a Kira object with your API key
-kira = Kira(api_key)
+1. # Create a Kira object with your API key
+2. kira = Kira(api_key)
 
 # Check your balance
 balance = kira.get_balance()
