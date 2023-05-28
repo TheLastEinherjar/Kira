@@ -30,20 +30,20 @@ else:
 ```
 # Methods
 
-get_balance() to retrieve the account balance.
+`get_balance()` to retrieve the account balance.
 
-get_order_price(country_code, service_name) to retrieve the price of an SMS for a specific country and service.
+`get_order_price(country_code, service_name)` to retrieve the price of an SMS for a specific country and service.
 
-get_countries() to retrieve a list of countries available for ordering phone numbers.
+`get_countries()` to retrieve a list of countries available for ordering phone numbers.
 
-get_country_id_by_country_code(country_code) to get the ID of the country based on its country code.
+`get_country_id_by_country_code(country_code)` to get the ID of the country based on its country code.
 
-get_services() to retrieve a list of services available when ordering phone numbers.
+`get_services()` to retrieve a list of services available when ordering phone numbers.
 
-get_service_id_by_name(service_name) to get the ID of the service based on its name.
+`get_service_id_by_name(service_name)` to get the ID of the service based on its name.
 
-order_phone_number(country_code, service_name) to order a phone number for a specific country and service.
+`order_phone_number(country_code, service_name)` to order a phone number for a specific country and service.
 
-check_sms(order_id, get_response_on_fail=False) to check if an SMS has been received for a specific order ID.
+`check_sms(order_id, get_response_on_fail=False)` to check if an SMS has been received for a specific order ID.
 
-wait_for_sms(order_id, cycle_time) to wait for an SMS to be received for a specific order ID.
+`wait_for_sms(order_id, cycle_time, max_wait_time=-1)` to wait for an SMS to be received for a specific order ID.
