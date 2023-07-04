@@ -1,7 +1,6 @@
 # Kira
 Kira is a python class for interacting with the smspool.net api. 
 
-I am not sure all of this works but I will remove this part from the readme when I am sure.
 
 # Example
 
