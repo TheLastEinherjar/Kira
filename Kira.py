@@ -60,7 +60,7 @@ class Kira :
         response = requests.post(url, data=data)
         json_response = response.json()
         if 'number' in json_response:
-            return json_response['number'], json_response['order_id']
+            return str(json_response['number']), str(json_response['order_id'])
         else:
             print(json_response)
             return None, None
@@ -83,7 +83,7 @@ class Kira :
             else :
                 return None
         
-    def wait_for_sms(self, order_id, cycle_time:int, max_wait_time:int = -1) :
+    def wait_for_sms(self, order_id, cycle_time:int=10, max_wait_time:int = -1) :
         current_wait_time = 0
         done_looping = False
         while not done_looping  :
@@ -101,7 +101,7 @@ class Kira :
                     #else return the message
                     return False, response['message']
             else :
-                return True, response['sms']
+                return True, response
         return False, 'wait time up'
 
 
