@@ -1,5 +1,7 @@
 import requests
 import time
+import json
+import os
 
 class Kira :
     def get_balance(self) :
@@ -21,7 +23,7 @@ class Kira :
         response = requests.get(url, params=params)
         json_response = response.json()
         if 'price' in json_response :
-            return json_response['price']
+            return float(json_response['price'])
         else :
             return None
     
@@ -103,7 +105,20 @@ class Kira :
             else :
                 return True, response
         return False, 'wait time up'
+    
+    def refund(self, order_id) :
+        url = 'https://api.smspool.net/sms/cancel'
+        params = {
+            'key': self.api_key,
+            'orderid': order_id
+        }
+        response = requests.get(url=url, params=params)
+        return bool(response.json()['success'])
 
+    def _config(self) :
+        with open(f'{os.path.dirname(__file__)}/KiraConfig.json', 'rb') as config_json :
+            config = json.load(config_json)
+        self.api_key = config['api_key']
 
-    def __init__(self, api_key) :
-        self.api_key = api_key
+    def __init__(self) :
+        self._config()
