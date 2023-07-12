@@ -10,6 +10,22 @@ class Kira :
         response = requests.get(url, params=params)
         json_response = response.json()
         return float(json_response['balance'])
+
+    def get_eth_address(self) :
+        '''
+        gets an address for you to deposit eth to top up your account
+        returns the address or false if there is an error
+        '''
+        url = 'https://api.smspool.net/request/address'
+        params = {
+            'key': self.api_key,
+            'method': 'ETH',
+        }
+        response = requests.get(url, params=params)
+        json_response = response.json()
+        if json_response['success'] :
+            return json_response['address']
+        return False
     
     def get_order_price(self, country_code, service_name) :
         url = 'https://api.smspool.net/request/price'
